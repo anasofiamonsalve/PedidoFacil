@@ -1,22 +1,165 @@
-body {
-    background-color: #f5f6fa;
+:root {
+    --rojo: #c1121f;
+    --rojo-oscuro: #780000;
+    --rojo-claro: #fde8e8;
+    --fondo: #fff5f5;
 }
 
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--fondo);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main { flex: 1; }
+
+a { color: var(--rojo); }
+a:hover { color: var(--rojo-oscuro); }
+
+h2, h3, h4 {
+    color: var(--rojo-oscuro);
+    font-weight: 600;
+}
+
+/* ---------- Menú ---------- */
+.navbar-pedidofacil {
+    background: linear-gradient(90deg, var(--rojo-oscuro), var(--rojo));
+    box-shadow: 0 2px 10px rgba(120, 0, 0, 0.35);
+}
+
+.navbar-brand {
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.navbar-pedidofacil .nav-link {
+    border-radius: 8px;
+    margin-right: 4px;
+}
+
+.navbar-pedidofacil .nav-link:hover,
+.navbar-pedidofacil .nav-link.active {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ---------- Tarjetas ---------- */
 .card {
     border: none;
-    border-radius: 10px;
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(120, 0, 0, 0.1);
 }
 
-.table thead {
-    background-color: #212529;
-    color: white;
+.card-header-rojo {
+    background: linear-gradient(90deg, var(--rojo-oscuro), var(--rojo));
+    border-radius: 14px 14px 0 0;
+    padding: 1rem 1.25rem;
 }
 
+.card-header-rojo h4 { color: #fff; }
+
+.login-icono {
+    font-size: 3rem;
+    color: var(--rojo);
+}
+
+/* ---------- Tablas ---------- */
+.table {
+    --bs-table-striped-bg: #fff0f0;
+    background-color: #fff;
+}
+
+.table thead th {
+    background-color: var(--rojo-oscuro);
+    color: #fff;
+    border: none;
+}
+
+.table-responsive {
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(120, 0, 0, 0.08);
+}
+
+/* ---------- Botones ---------- */
 .btn {
-    border-radius: 6px;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.btn-primary,
+.btn-success {
+    --bs-btn-bg: var(--rojo);
+    --bs-btn-border-color: var(--rojo);
+    --bs-btn-hover-bg: var(--rojo-oscuro);
+    --bs-btn-hover-border-color: var(--rojo-oscuro);
+    --bs-btn-active-bg: var(--rojo-oscuro);
+    --bs-btn-active-border-color: var(--rojo-oscuro);
+    --bs-btn-focus-shadow-rgb: 193, 18, 31;
+}
+
+.btn-danger {
+    --bs-btn-bg: #7f1d1d;
+    --bs-btn-border-color: #7f1d1d;
+    --bs-btn-hover-bg: #5c1010;
+    --bs-btn-hover-border-color: #5c1010;
+    --bs-btn-active-bg: #5c1010;
+    --bs-btn-active-border-color: #5c1010;
+}
+
+.btn-warning {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #e76f51;
+    --bs-btn-border-color: #e76f51;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #d45a3c;
+    --bs-btn-hover-border-color: #d45a3c;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #d45a3c;
+    --bs-btn-active-border-color: #d45a3c;
+}
+
+.btn-info {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #6b4f4f;
+    --bs-btn-border-color: #6b4f4f;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #4e3a3a;
+    --bs-btn-hover-border-color: #4e3a3a;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #4e3a3a;
+    --bs-btn-active-border-color: #4e3a3a;
+}
+
+/* ---------- Formularios ---------- */
+.form-label {
+    font-weight: 500;
+    color: var(--rojo-oscuro);
+}
+
+.form-control,
+.form-select {
+    border-radius: 8px;
+    border: 1px solid #e3c2c2;
 }
 
 .form-control:focus,
 .form-select:focus {
-    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.2);
+    border-color: var(--rojo);
+    box-shadow: 0 0 0 0.2rem rgba(193, 18, 31, 0.2);
+}
+
+/* ---------- Mensajes y listas ---------- */
+.alert {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.list-group-item strong { color: var(--rojo-oscuro); }
+
+/* ---------- Pie de página ---------- */
+.footer-pedidofacil {
+    background-color: var(--rojo-oscuro);
+    color: rgba(255, 255, 255, 0.85);
 }
