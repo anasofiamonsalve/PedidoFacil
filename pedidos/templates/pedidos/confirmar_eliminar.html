@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card border-danger">
+    <div class="card-body">
+        <h4>¿Eliminar el pedido "{{ pedido.numero_pedido }}"?</h4>
+        <p>Cliente: {{ pedido.cliente }}. Esta acción no se puede deshacer.</p>
+        <form method="post">
+            {% csrf_token %}
+            <button class="btn btn-danger">Sí, eliminar</button>
+            <a href="{% url 'lista_pedidos' %}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

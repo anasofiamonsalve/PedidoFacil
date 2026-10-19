@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
-<h2>{{ titulo }}</h2>
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h2>{{ titulo }}</h2>
 <form method="post" id="form-producto" novalidate>
     {% csrf_token %}
     {% for campo in form %}
@@ -15,4 +20,14 @@
     <button class="btn btn-primary">Guardar</button>
     <a href="{% url 'lista_productos' %}" class="btn btn-secondary">Cancelar</a>
 </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{% static 'js/validaciones.js' %}"></script>
+<script>
+    activarValidacion('form-producto', reglasProducto);
+</script>
 {% endblock %}

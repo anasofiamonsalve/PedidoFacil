@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Pedidos</h2>
+    <a href="{% url 'crear_pedido' %}" class="btn btn-success">+ Nuevo pedido</a>
+</div>
+
+<form method="get" class="input-group mb-3">
+    <input type="text" name="q" value="{{ q }}" class="form-control" placeholder="Buscar por nombre del cliente">
+    <button class="btn btn-outline-secondary">Buscar</button>
+</form>
+
+<div class="table-responsive">
+    <table class="table table-striped align-middle">
+        <thead>
+            <tr>
+                <th>N.º pedido</th>
+                <th>Cliente</th>
+                <th>Valor total</th>
+                <th>Estado</th>
+                <th>Fecha</th>
+                <th>Registró</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for p in pedidos %}
+            <tr>
+                <td>{{ p.numero_pedido }}</td>
+                <td>{{ p.cliente }}</td>
+                <td>${{ p.valor_total }}</td>
+                <td>
+                    {% if p.estado == 'pendiente' %}
+                        <span class="badge bg-warning text-dark">Pendiente</span>
+                    {% elif p.estado == 'confirmado' %}
+                        <span class="badge bg-success">Confirmado</span>
+                    {% else %}
+                        <span class="badge bg-danger">Cancelado</span>
+                    {% endif %}
+                </td>
+                <td>{{ p.fecha_registro|date:"d/m/Y" }}</td>
+                <td>{{ p.usuario.username }}</td>
+                <td>
+                    <a href="{% url 'detalle_pedido' p.pk %}" class="btn btn-info btn-sm">Ver</a>
+                    <a href="{% url 'editar_pedido' p.pk %}" class="btn btn-warning btn-sm">Editar</a>
+                    <a href="{% url 'eliminar_pedido' p.pk %}" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+        {% empty %}
+            <tr><td colspan="7" class="text-center">No hay pedidos registrados.</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

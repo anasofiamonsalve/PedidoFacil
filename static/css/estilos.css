@@ -1,0 +1,22 @@
+body {
+    background-color: #f5f6fa;
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+}
+
+.table thead {
+    background-color: #212529;
+    color: white;
+}
+
+.btn {
+    border-radius: 6px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.2);
+}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Pedido {{ pedido.numero_pedido }}</h2>
+<ul class="list-group mb-3">
+    <li class="list-group-item"><strong>Cliente:</strong> {{ pedido.cliente }}</li>
+    <li class="list-group-item"><strong>Descripción:</strong> {{ pedido.descripcion }}</li>
+    <li class="list-group-item"><strong>Valor total:</strong> ${{ pedido.valor_total }}</li>
+    <li class="list-group-item"><strong>Estado:</strong> {{ pedido.get_estado_display }}</li>
+    <li class="list-group-item"><strong>Fecha de registro:</strong> {{ pedido.fecha_registro|date:"d/m/Y H:i" }}</li>
+    <li class="list-group-item"><strong>Registrado por:</strong> {{ pedido.usuario.username }}</li>
+</ul>
+
+<form method="post" action="{% url 'cambiar_estado' pedido.pk %}" class="row g-2 mb-3">
+    {% csrf_token %}
+    <div class="col-auto">
+        <select name="estado" class="form-select">
+            {% for valor, nombre in estados %}
+                <option value="{{ valor }}" {% if valor == pedido.estado %}selected{% endif %}>{{ nombre }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="col-auto">
+        <button class="btn btn-primary">Cambiar estado</button>
+    </div>
+</form>
+
+<a href="{% url 'editar_pedido' pedido.pk %}" class="btn btn-warning">Editar</a>
+<a href="{% url 'lista_pedidos' %}" class="btn btn-secondary">Volver</a>
+{% endblock %}
